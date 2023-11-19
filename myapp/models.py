@@ -1,7 +1,9 @@
 from django.db import models
 
 
-class Product(models.Model):
-    name = models.CharField(max_length=255)
-    price = models.IntegerField()
+class Event(models.Model):
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    date = models.DateTimeField()
+    location = models.CharField(max_length=255)
 
