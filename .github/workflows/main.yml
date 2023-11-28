@@ -1,15 +1,18 @@
 name: Deploy
+
 on:
   push:
     branches:
     - main
 jobs:
   build:
+
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
       matrix:
-        python-version: [3.6]
+        python-version: [3.10]
+
     steps:
     - uses: actions/checkout@v3
     - name: executing remote ssh commands using password
@@ -20,7 +23,7 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: 22
         script: |
-          cd workspace-Anuar/back-end
+          cd ~/workspace-Anuar/back-end
           source ./venv/bin/activate
           git pull
           python manage.py migrate
